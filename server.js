@@ -55,7 +55,7 @@ const Album = mongoose.model("Album", AlbumSchema);
 const Recommendation = mongoose.model("Recommendation", RecommendationSchema);
 
 // --- CONNEXION MONGODB & MIGRATION ---
-const MONGO_URI = "mongodb+srv://infoconcerts29_db_user:MIxEsTrxkOTuL6ft@concerts.ubwtclt.mongodb.net/?appName=Concerts"
+const MONGO_URI = "mongodb+srv://pereiraaenor00_db_user:8ONQA1y94fbXSYFF@myconcerts.cspi3v1.mongodb.net/?appName=MyConcerts"
 
 mongoose.connect(MONGO_URI)
     .then(async () => {
