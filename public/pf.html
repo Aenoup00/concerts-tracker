@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Concerts Tracker</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/jpeg" href="logo.jpg">
+	<style>
+		/* Style for the details of concerts */
+		.details-row.hidden {
+			display: none;
+		}
+
+		.details-row td {
+			padding: 0 !important;
+			/* delete every space in the elt, max priority */
+			background: #0b1130;
+		}
+
+		.inline-details-container {
+			padding: 1.5rem 2rem;
+			border-top: 1px dashed #26336b;
+			border-bottom: 1px dashed #26336b;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="header">
+		<a href="index.html" class="logo">My <span>Music</span></a>
+
+		<div id="menu-icon">☰</div>
+
+		<nav class="navbar" id="navbar">
+			<a href="index.html">Home</a>
+			<a href="pf.html">My Profile</a>
+			<a href="add.html">Add a Concert</a>
+			<a href="shopping.html">Vinyls & CDs</a> <!-- NOUVEAU LIEN -->
+			<a href="stat.html">Stats</a>
+			<a href="about.html">About</a>
+		</nav>
+
+		<a href="login.html" class="gradient-btn">Connect</a>
+	</header>
+
+	<main>
+		<section class="hero">
+			<h1 class="second">My <span>Profile</span></h1>
+		</section>
+		<section class="profile-container" style="padding-top: 1rem;">
+			<div class="profile-section">
+				<h2>Artists Seen</h2>
+				<table class="artists-table">
+					<thead>
+						<tr>
+							<th>Artist</th>
+							<th>Times Seen</th>
+						</tr>
+					</thead>
+					<tbody id="artistsTableBody">
+						<!-- JS dynamic -->
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Wishlist -->
+			<div class="profile-section" style="margin-top: 4rem;">
+				<h2>Wishlist</h2>
+				<ul id="futureConcertsList" class="wishlist">
+					<!-- JS dynamic -->
+				</ul>
+			</div>
+		</section>
+	</main>
+
+	<script>
+		async function loadProfileData() {
+			try {
+				const res = await fetch('/api/my-concerts'); // wait for the response
+				if (res.status === 401) { // the user isn't connected
+					window.location.href = '/login';
+					return;
+				}
+
+				const data = await res.json(); // convert the response into a json
+
+				pastConcertsData = data.past || [];
+				renderArtistsTable(pastConcertsData); // call the function to display concerts
+				renderFutureList(data.future || []); // same thing but w/ the wishlist
+			} catch (err) {
+				console.error("Error loading profile:", err);
+			}
+		}
+
+		function renderArtistsTable(concerts) {
+			const tbody = document.getElementById('artistsTableBody');
+			tbody.innerHTML = ''; // empties <tbody> current contents
+
+			if (!Array.isArray(concerts) || concerts.length === 0) { // the tables is empty
+				tbody.innerHTML = '<tr><td colspan="2">No concerts recorded yet.</td></tr>';
+				return;
+			}
+
+			const artistCounts = {};
+
+			concerts.forEach(c => {
+				if (c.artist) {
+					const rawName = c.artist.trim(); // no useleff space
+					const lowerName = rawName.toLowerCase(); // convert it to lowercase, to avoid duplicates
+					if (!artistCounts[lowerName]) {
+						artistCounts[lowerName] = {
+							displayName: rawName,
+							count: 1
+						};
+					} else {
+						artistCounts[lowerName].count += 1;
+					}
+				}
+			});
+
+			Object.keys(artistCounts).forEach(key => { // loop on each artist
+				const item = artistCounts[key];
+
+				const tr = document.createElement('tr'); // create a line
+				tr.style.cursor = 'pointer';
+				tr.onclick = () => showArtistDetails(key);
+				tr.innerHTML = `
+          <td class="artist-clickable">${item.displayName}</td>
+          <td><span class="badge">${item.count}</span></td>
+        `;
+
+				const trDetails = document.createElement('tr'); // create a second line hidden
+				trDetails.id = `details-row-${key}`; // unique key
+				trDetails.className = 'details-row hidden';
+
+				const filtered = concerts.filter(c => c.artist && c.artist.trim().toLowerCase() === key);
+				let cardsHTML = '';
+
+				filtered.forEach(c => { // Create HTML cards with concert details
+					cardsHTML += `
+						<div class="detail-card">
+							<p><strong>Type:</strong> ${c.eventType === 'festival' ? '🎪 Festival' : '🎤 Concert'}</p>
+							<p><strong>Date:</strong> ${c.date}</p>
+							<p><strong>Location:</strong> ${c.location || 'N/A'}</p>
+							${c.rating ? `<p><strong>Rating:</strong> ${c.rating}/10 ⭐</p>` : ''}
+						</div>
+					`;
+				});
+
+				trDetails.innerHTML = `
+          <td colspan="2">
+            <div class="inline-details-container">
+              <h3 style="font-size: 1.6rem; margin-bottom: 1rem; color: var(--main-color);">Concerts seen for ${item.displayName}:</h3>
+              <div class="details-cards">
+                ${cardsHTML}
+              </div>
+            </div>
+          </td>
+        `;
+
+				tbody.appendChild(tr); // in tbody
+				tbody.appendChild(trDetails); // same
+			});
+		}
+
+		function showArtistDetails(artistKey) {
+			const targetRow = document.getElementById(`details-row-${artistKey}`);
+			const isCurrentlyHidden = targetRow.classList.contains('hidden');
+
+			document.querySelectorAll('.details-row').forEach(row => { // Hide others artists' details
+				row.classList.add('hidden');
+			});
+
+			if (isCurrentlyHidden) { // If the line is hidden we show it
+				targetRow.classList.remove('hidden');
+			}
+		}
+
+		function renderFutureList(futureConcerts) {
+			const ul = document.getElementById('futureConcertsList');
+			ul.innerHTML = '';
+
+			if (!Array.isArray(futureConcerts) || futureConcerts.length === 0) {
+				ul.innerHTML = '<li>No upcoming concerts in your wishlist.</li>';
+				return;
+			}
+
+			futureConcerts.forEach(item => {
+				const li = document.createElement('li');
+				li.innerHTML = `<strong>${item.artist}</strong> ${item.song ? `— Favorite song: <em>${item.song}</em>` : ''}`;
+				ul.appendChild(li);
+			});
+		}
+
+		document.addEventListener('DOMContentLoaded', loadProfileData);
+
+		const menuIcon = document.getElementById('menu-icon');
+		const navbar = document.querySelector('.navbar');
+
+		if (menuIcon) {
+			menuIcon.addEventListener('click', () => {
+				navbar.classList.toggle('active');
+			});
+		}
+	</script>
+</body>
+
+</html>

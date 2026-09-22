@@ -1,0 +1,59 @@
+[
+  {
+    "admin": true,
+    "name": "Aenor",
+    "username": "Aenlpb",
+    "password": "6dd244cc7818a538eae7001c6fd3d9d5ff7f9172e257b2395d76b84905c975a7"
+  },
+  {
+    "admin": false,
+    "name": "Natan",
+    "username": "Natou",
+    "password": "4cb6d162d5f4ab255814180f49e8b2d921e49570012991c4dd3d8e04f9d57c8d"
+  },
+  {
+    "admin": false,
+    "name": "Aénor",
+    "username": "Aenou",
+    "password": "50a67dc954712379f5269e4b772a7d6aaaf6cd4735d37b7df0e3577da6a84753",
+    "isBlocked": false
+  },
+  {
+    "admin": false,
+    "name": "Alexandra",
+    "username": "Alexou",
+    "password": "783ace6d5d083b0a58fd1630d65b4f960b9e21f69ff2966d4ad06350e82710ea",
+    "isBlocked": false
+  },
+  {
+    "admin": false,
+    "name": "Romane",
+    "username": "Romanou",
+    "password": "83f1dc2913ba0ccc499509e9338b23e72855179e86e160b626180924e5acb6ca",
+    "isBlocked": true
+  },
+  {
+    "admin": false,
+    "name": "Flora",
+    "username": "Floflo",
+    "password": "fdd83684551ce0d3013513f929a324e13207822db02c8d1ee81ad7554b09c57a"
+  },
+  {
+    "admin": false,
+    "name": "Carol Pereira",
+    "username": "Kakou",
+    "password": "679d0e6c464522054bbbf953b11df705ea1cbab57163468ed53d8ec6f5705517"
+  },
+  {
+    "admin": false,
+    "name": "Paulo Pereira",
+    "username": "Pollux",
+    "password": "ab616a033edd773a6bc6ef3748d29fef5f6f9a201c301c48d6384818bcc52732"
+  },
+  {
+    "admin": false,
+    "name": "Sarra",
+    "username": "BellePlage",
+    "password": "9f1acd0fedbfd456924db40b196c624f93ac6688bb5dcbd8898bdc50e10a5914"
+  }
+]

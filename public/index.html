@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Concert Tracker</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/jpeg" href="logo.jpg">
+</head>
+
+<body>
+	<header class="header">
+		<a href="index.html" class="logo">My <span>Music</span></a>
+
+		<div id="menu-icon">☰</div>
+
+		<nav class="navbar" id="navbar">
+			<a href="index.html">Home</a>
+			<a href="pf.html">My Profile</a>
+			<a href="add.html">Add a Concert</a>
+			<a href="shopping.html">Vinyls & CDs</a> <!-- NOUVEAU LIEN -->
+			<a href="stat.html">Stats</a>
+			<a href="about.html">About</a>
+		</nav>
+
+		<a href="login.html" class="gradient-btn" id="authBtn">Connect</a>
+	</header>
+
+	<section class="home" id="home">
+		<div class="home-content">
+			<h1>Welcome !</h1>
+			<h3>My <span>Music Recommendations</span></h3>
+			<p>Discover all the albums and artits I recommend here.<br>Every trackt tells a story.</p>
+
+			<div class="btn-group">
+				<a href="#form" class="btn">Suggest a Recommendation</a>
+				<a href="#recommendation" class="btn">See all my Recommendations</a>
+			</div>
+		</div>
+
+		<div class="home-img">
+			<img src="/img/tvgirl.jpg" alt="TV Girl" id="heroAudioImg" style="cursor: url('img/star.png') 0 0, auto;"
+				title="Click to play TV Girl!">
+		</div>
+	</section>
+
+	<section class="recommendation" id="recommendation">
+		<h2>My <span>Music Recommendations</span></h2>
+
+		<!-- Selection tabs -->
+		<div class="tabs">
+			<button class="tab-btn active" onclick="openTab(event, 'music')">Music</button>
+			<button class="tab-btn" onclick="openTab(event, 'album')">Album</button>
+			<button class="tab-btn" onclick="openTab(event, 'artist')">Artist</button>
+		</div>
+
+		<!-- Music -->
+		<div id="music" class="tab-content active">
+			<div class="cards-grid">
+				<div class="card">
+					<img src="img/dancetaria.jpg" alt="Pochette Indochine" class="card-cover">
+					<div class="card-info">
+						<h3>Juste toi et moi</h3>
+						<p>Indochine</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/hexagone.jpg" alt="Pochette hexagone" class="card-cover">
+					<div class="card-info">
+						<h3>Hexagone</h3>
+						<p>Renaud</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/lafemme.jpeg" alt="Pochette La Femme" class="card-cover">
+					<div class="card-info">
+						<h3>Septembre</h3>
+						<p>La Femme</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/thepolice.jpg" alt="Pochette The Police" class="card-cover">
+					<div class="card-info">
+						<h3>Every Breath You Take</h3>
+						<p>The Police</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/fal.jpeg" alt="Pochette Flamme à Lunnettes" class="card-cover">
+					<div class="card-info">
+						<h3>Flamme à Lunnettes</h3>
+						<p>Dionysos feat Olivia Ruiz</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/ap.png" alt="Pochette American Pie" class="card-cover">
+					<div class="card-info">
+						<h3>American Pie</h3>
+						<p>Don McLean</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/khali.jpg" alt="Pochette Khali" class="card-cover">
+					<div class="card-info">
+						<h3>RIEN NE VA ME SUFFIR</h3>
+						<p>Khali</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/icibas.jpeg" alt="Pochette Ici-bas" class="card-cover">
+					<div class="card-info">
+						<h3>Ici-bas</h3>
+						<p>Les Cowboys Fringans</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/sierraleaone.jpeg" alt="Pochette Sierra leon" class="card-cover">
+					<div class="card-info">
+						<h3>SIERRA LEON</h3>
+						<p>Timar</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/hollywood.png" alt="Pochette Hollywood" class="card-cover">
+					<div class="card-info">
+						<h3>Hollywood</h3>
+						<p>Dali</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/lafemme.jpeg" alt="Pochette La Femme" class="card-cover">
+					<div class="card-info">
+						<h3>Tatiana</h3>
+						<p>La Femme</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/123.jpeg" alt="Pochette Dayarga" class="card-cover">
+					<div class="card-info">
+						<h3>1 2 3</h3>
+						<p>Dayarga</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Album -->
+		<div id="album" class="tab-content">
+			<div class="cards-grid">
+				<div class="card">
+					<img src="img/dancetaria.jpg" alt="Pochette Indochine" class="card-cover">
+					<div class="card-info">
+						<h3>Dancetaria</h3>
+						<p>Indochine</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/choco.jpeg" alt="Pochette Olivia" class="card-cover">
+					<div class="card-info">
+						<h3>La femme chocolat</h3>
+						<p>Olivia Ruiz</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/baiser.jpeg" alt="Pochette baiser" class="card-cover">
+					<div class="card-info">
+						<h3>Baiser</h3>
+						<p>Wallace Cleaver</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/marcel" alt="Pochette Marcel" class="card-cover">
+					<div class="card-info">
+						<h3>Marcel</h3>
+						<p>Wallace Cleaver</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/rockmachine.jpeg" alt="Pochette rockmachine" class="card-cover">
+					<div class="card-info">
+						<h3>Rock Machine</h3>
+						<p>La femme</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/2l.jpeg" alt="Pochette 2l" class="card-cover">
+					<div class="card-info">
+						<h3>Maria</h3>
+						<p>2l</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/st.jpeg" alt="Pochette Super Trouper" class="card-cover">
+					<div class="card-info">
+						<h3>Super Trouper</h3>
+						<p>ABBA</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/khali.jpg" alt="Pochette Khali" class="card-cover">
+					<div class="card-info">
+						<h3>23 -</h3>
+						<p>Khali</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/montagne.jpeg" alt="Pochette Lujipeka" class="card-cover">
+					<div class="card-info">
+						<h3>Montagnes Russes</h3>
+						<p>Lujipeka</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/lonely.jpeg" alt="Pochette tvgirl" class="card-cover">
+					<div class="card-info">
+						<h3>Lonely Women</h3>
+						<p>TV Girl</p>
+					</div>
+				</div>
+				<div class="card">
+					<img src="img/nuage.jpeg" alt="Pochette Sopico" class="card-cover">
+					<div class="card-info">
+						<h3>Nuage</h3>
+						<p>Sopico</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Artist -->
+		<div id="artist" class="tab-content">
+			<div class="cards-grid">
+				<div class="card artist-card">
+					<img src="img/indochine.jpeg" alt="Photo Indochine" class="card-cover circle">
+					<div class="card-info">
+						<h3>Indochine</h3>
+					</div>
+				</div>
+				<div class="card artist-card">
+					<img src="img/columbine.jpg" alt="Photo Columbine" class="card-cover circle">
+					<div class="card-info">
+						<h3>Columbine</h3>
+					</div>
+				</div>
+				<div class="card artist-card">
+					<img src="img/wallace.jpeg" alt="Photo Wallace Cleaver" class="card-cover circle">
+					<div class="card-info">
+						<h3>Wallace Cleaver</h3>
+					</div>
+				</div>
+				<div class="card artist-card">
+					<img src="img/cure.jpeg" alt="Photo The Cure" class="card-cover circle">
+					<div class="card-info">
+						<h3>The Cure</h3>
+					</div>
+				</div>
+				<div class="card artist-card">
+					<img src="img/tvgirl.jpg" alt="Photo TV Girl" class="card-cover circle">
+					<div class="card-info">
+						<h3>TV Girl</h3>
+					</div>
+				</div>
+				<div class="card artist-card">
+					<img src="img/aupinard.jpeg" alt="Photo Aupinard" class="card-cover circle">
+					<div class="card-info">
+						<h3>Aupinard</h3>
+					</div>
+				</div>
+				<div class="card artist-card">
+					<img src="img/khali.jpg" alt="Photo Khali" class="card-cover circle">
+					<div class="card-info">
+						<h3>Khali</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="form-container" id="form">
+		<h2>Suggest me some <span>music !</span></h2>
+		<p class="subtitle">Share a song or album you think I'd like !</p>
+
+		<div class="card-form">
+			<form action="/recommendations" method="POST">
+				<div class="input-group">
+					<label for="username">Your name / nickname</label>
+					<input type="text" id="username" name="username" required placeholder="Your name or your nickname">
+				</div>
+
+				<div class="input-group">
+					<label>Recommendation type</label>
+					<div class="radio-group">
+						<label class="radio-option">
+							<input type="radio" name="type" value="song" checked> Song
+						</label>
+						<label class="radio-option">
+							<input type="radio" name="type" value="album"> Album
+						</label>
+						<label class="radio-option">
+							<input type="radio" name="type" value="artist"> Artist
+						</label>
+					</div>
+				</div>
+
+				<div class="input-group">
+					<label for="title">Album or Artist name</label>
+					<input type="text" id="title" name="title" required
+						placeholder="E.g.: Boys don't cry / Katy Perry / La Femme Chocolat">
+				</div>
+
+				<div class="input-group">
+					<label for="reason">Why do you recommend it ?</label>
+					<textarea id="reason" name="reason" required placeholder="Tell me why do you think I'd like it !"></textarea>
+				</div>
+
+				<button type="submit" class="submit-btn">Send my recommendation</button>
+			</form>
+		</div>
+	</section>
+
+	<script>
+		const tvGirlMusic = new Audio('tvgirl.mp3');
+		const heroImg = document.getElementById('heroAudioImg'); // select the html tags by his id
+
+		heroImg.addEventListener('click', () => { // event : when there is a click
+			if (tvGirlMusic.paused) { // if the music is paused
+				tvGirlMusic.play(); // play the music
+			} else {
+				tvGirlMusic.pause(); // stop the music
+			}
+		});
+
+		function openTab(evt, tabName) { // evt : click, tabName : the tab selected
+			const contents = document.querySelectorAll(".tab-content"); // collect every html tags w/ the css class : .tab-content
+			contents.forEach((content) => content.classList.remove("active"));
+
+			const buttons = document.querySelectorAll(".tab-btn"); // same but w/ a different css class
+			buttons.forEach((button) => button.classList.remove("active")); // remove "active" for each hidden tabs
+
+			document.getElementById(tabName).classList.add("active"); // add "active" to the tab selected, make the cards visible
+			evt.currentTarget.classList.add("active"); // change the button
+		}
+		const menuIcon = document.getElementById('menu-icon');
+		const navbar = document.querySelector('.navbar');
+
+		if (menuIcon) {
+			menuIcon.addEventListener('click', () => {
+				navbar.classList.toggle('active');
+			});
+		}
+	</script>
+</body>
+<footer>
+	<p>Aénor Pereira © 2026</p>
+	<p>If you have any question please contact me via : <a
+			href="mailto:info.concerts29@gmail.com">info.concerts29@gmail.com</a></p>
+</footer>
+
+</html>

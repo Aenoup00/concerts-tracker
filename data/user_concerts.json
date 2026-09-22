@@ -1,0 +1,444 @@
+[
+  {
+    "username": "Aenou",
+    "past": [
+      {
+        "artist": "Les Cowboys Fringants",
+        "date": "2017-04-05",
+        "location": "L'Olympia",
+        "rating": "10",
+        "eventType": "concert"
+      },
+      {
+        "artist": "Lujipeka",
+        "date": "2022-07-16",
+        "location": "Francofolies",
+        "rating": "9",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Roméo Elvis",
+        "date": "2022-07-16",
+        "location": "Francofolies",
+        "rating": "5",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Orelsan",
+        "date": "2022-07-16",
+        "location": "Francofolies",
+        "rating": "8",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Sopico",
+        "date": "2022-07-16",
+        "location": "Francofolies",
+        "rating": "4",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Kids United",
+        "date": "2018-06-09",
+        "location": "Zénith d'Orléans",
+        "rating": "6",
+        "eventType": "concert"
+      },
+      {
+        "artist": "Lujipeka",
+        "date": "2023-03-31",
+        "location": "Zénith de Paris",
+        "rating": "8",
+        "eventType": "concert"
+      },
+      {
+        "artist": "Laylow",
+        "date": "2022-09-09",
+        "location": "Fete de l'huma",
+        "rating": "6",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Ziak",
+        "date": "2022-09-10",
+        "location": "Fete de l'huma",
+        "rating": "7",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Sexion d'Assaut",
+        "date": "2022-09-10",
+        "location": "Fete de l'huma",
+        "rating": "7",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Les Wampas",
+        "date": "2022-09-10",
+        "location": "Fete de l'huma",
+        "rating": "5",
+        "eventType": "festival"
+      },
+      {
+        "artist": "L²",
+        "date": "2022-10-28",
+        "location": "La Maroquinerie",
+        "rating": "7",
+        "eventType": "concert"
+      },
+      {
+        "artist": "Lujipeka",
+        "date": "2023-06-28",
+        "location": "Fnac Live Paris",
+        "rating": "6",
+        "eventType": "concert"
+      },
+      {
+        "artist": "Djadja et Dinaz",
+        "date": "2023-09-15",
+        "location": "Fete de l'huma",
+        "rating": "3",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Angèle",
+        "date": "2023-09-17",
+        "location": "Fete de l'huma",
+        "rating": "8",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Bigflo & Oli",
+        "date": "2023-09-16",
+        "location": "Fete de l'huma",
+        "rating": "9",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Caballero & Jeanjass",
+        "date": "2023-09-17",
+        "location": "Fete de l'huma",
+        "rating": "7",
+        "eventType": "festival"
+      },
+      {
+        "artist": "La Femme",
+        "date": "2023-09-16",
+        "location": "Fete de l'huma",
+        "rating": "9",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Soolking",
+        "date": "2023-09-16",
+        "location": "Fete de l'huma",
+        "rating": "2",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Martin Solveig",
+        "date": "2023-09-15",
+        "location": "Fete de l'huma",
+        "rating": "7",
+        "eventType": "festival"
+      },
+      {
+        "artist": "SCH",
+        "date": "2024-09-13",
+        "location": "Fete de l'huma",
+        "rating": "6",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Calogero",
+        "date": "2024-09-15",
+        "location": "Fete de l'huma",
+        "rating": "7",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Gwendoline",
+        "date": "2024-09-13",
+        "location": "Fete de l'huma",
+        "rating": "8",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Mc Solaar",
+        "date": "2024-09-14",
+        "location": "Fete de l'huma",
+        "rating": "5",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Jain",
+        "date": "2024-04-14",
+        "location": "Fete de l'huma",
+        "rating": "7",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Louise Attaque",
+        "date": "2024-09-14",
+        "location": "Fete de l'huma",
+        "rating": "10",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Kerchak",
+        "date": "2024-09-15",
+        "location": "Fete de l'huma",
+        "rating": "7",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Vladimir Cauchemar",
+        "date": "2024-09-13",
+        "location": "Fete de l'huma",
+        "rating": "4",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Indochine",
+        "date": "2025-02-15",
+        "location": "Arena d'Orléans",
+        "rating": "10",
+        "eventType": "concert"
+      },
+      {
+        "artist": "Kendrick Lamar & SZA",
+        "date": "2025-07-16",
+        "location": "Plenitude Arena",
+        "rating": "3",
+        "eventType": "concert"
+      },
+      {
+        "artist": "Theodora",
+        "date": "2025-09-12",
+        "location": "Fete de l'huma",
+        "rating": "6",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Gwendoline",
+        "date": "2025-01-23",
+        "location": "La Cigale",
+        "rating": "9",
+        "eventType": "concert"
+      },
+      {
+        "artist": "Adèle Castillon",
+        "date": "2025-09-15",
+        "location": "Fete de l'huma",
+        "rating": "9",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Eddy de Pretto",
+        "date": "2025-09-13",
+        "location": "Fete de l'huma",
+        "rating": "8",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Gims",
+        "date": "2025-09-14",
+        "location": "Fete de l'huma",
+        "rating": "9",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Hoshi",
+        "date": "2025-09-14",
+        "location": "Fete de l'huma",
+        "rating": "6",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Patti Smith",
+        "date": "2025-09-13",
+        "location": "Fete de l'huma",
+        "rating": "2",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Tshegue",
+        "date": "2025-09-12",
+        "location": "Fete de l'huma",
+        "rating": "5",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Youssoupha",
+        "date": "2025-09-12",
+        "location": "Fete de l'huma",
+        "rating": "6",
+        "eventType": "festival"
+      },
+      {
+        "artist": "47Soul",
+        "date": "2025-09-14",
+        "location": "Fete de l'huma",
+        "rating": "8",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Zamdane",
+        "date": "2025-09-13",
+        "location": "Fete de l'huma",
+        "rating": "1",
+        "eventType": "festival"
+      },
+      {
+        "artist": "The Odds",
+        "date": "0006-02-01",
+        "location": "La Cigale",
+        "rating": "6",
+        "eventType": "concert"
+      },
+      {
+        "artist": "Indochine",
+        "date": "2026-03-07",
+        "location": "Accor Arena",
+        "rating": "10",
+        "eventType": "concert"
+      },
+      {
+        "artist": "Aupinard",
+        "date": "2026-04-03",
+        "location": "Pleyel",
+        "rating": "10",
+        "eventType": "concert"
+      },
+      {
+        "artist": "2L",
+        "date": "2026-08-21",
+        "location": "Cabaret Vert",
+        "rating": "9",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Timar",
+        "date": "2026-08-21",
+        "location": "Cabaret Vert",
+        "rating": "6",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Jeune Morty",
+        "date": "2026-09-22",
+        "location": "Cabaret Vert",
+        "rating": "7",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Theodora",
+        "date": "2026-09-22",
+        "location": "Cabaret Vert",
+        "rating": "9",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Disiz",
+        "date": "2026-09-22",
+        "location": "Cabaret Vert",
+        "rating": "2",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Linlin",
+        "date": "2026-09-22",
+        "location": "Cabaret Vert",
+        "rating": "6",
+        "eventType": "festival"
+      },
+      {
+        "artist": "La Rvfleuse",
+        "date": "2026-09-22",
+        "location": "Cabaret Vert",
+        "rating": "6",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Josman",
+        "date": "2026-09-23",
+        "location": "Cabaret Vert",
+        "rating": "8",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Gims",
+        "date": "2026-09-23",
+        "location": "Cabaret Vert",
+        "rating": "9",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Eve la Marka",
+        "date": "2026-09-23",
+        "location": "Cabaret Vert",
+        "rating": "6",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Aupinard",
+        "date": "2025-06-21",
+        "location": "Fete de la musique",
+        "rating": "9",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Moji x Sboy",
+        "date": "2025-09-21",
+        "location": "Fete de la musique",
+        "rating": "10",
+        "eventType": "festival"
+      },
+      {
+        "artist": "Moji x Sboy",
+        "date": "2023-03-31",
+        "location": "Zénith de Paris",
+        "rating": "5",
+        "eventType": "concert"
+      },
+      {
+        "artist": "Dali",
+        "date": "2027-02-09",
+        "location": "L'Olympia",
+        "rating": "10"
+      }
+    ],
+    "future": [
+      {
+        "artist": "Wallace cleaver",
+        "song": "Déconnecté"
+      },
+      {
+        "artist": "Dalì",
+        "song": "Garçon "
+      },
+      {
+        "artist": "obzd",
+        "song": "izez"
+      }
+    ]
+  },
+  {
+    "username": "Kakou",
+    "past": [
+      {
+        "artist": "Lujipeka",
+        "date": "2022-07-16",
+        "location": "FrancoFolies",
+        "rating": "9"
+      },
+      {
+        "artist": "Orelsan",
+        "date": "2022-07-16",
+        "location": "FrancoFolies",
+        "rating": "9"
+      }
+    ],
+    "future": []
+  }
+]

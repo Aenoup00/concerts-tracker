@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Concert Statistics</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/jpeg" href="logo.jpg">
+</head>
+
+<body>
+	<header class="header">
+		<a href="index.html" class="logo">My <span>Music</span></a>
+
+		<div id="menu-icon">☰</div>
+
+		<nav class="navbar" id="navbar">
+			<a href="index.html">Home</a>
+			<a href="pf.html">My Profile</a>
+			<a href="add.html">Add a Concert</a>
+			<a href="shopping.html">Vinyls & CDs</a> <!-- NOUVEAU LIEN -->
+			<a href="stat.html">Stats</a>
+			<a href="about.html">About</a>
+		</nav>
+
+		<a href="login.html" class="gradient-btn" id="authBtn">Connect</a>
+	</header>
+
+	<section class="hero">
+		<div class="home-content">
+			<h1>My <span>Concert Stats</span></h1>
+			<p>A quick overview of your live music experiences and top highlights</p>
+		</div>
+	</section>
+
+	<section class="recommendation">
+		<div class="cards-grid" style="margin-bottom: 3rem;">
+			<div class="card" style="text-align: center; padding: 3rem;">
+				<h3 style="font-size: 3rem; color: var(--main-color);" id="totalConcerts">0</h3>
+				<p>Total Artist Seen</p>
+			</div>
+			<div class="card" style="text-align: center; padding: 3rem;">
+				<h3 style="font-size: 3rem; color: var(--main-color);" id="totalWish">0</h3>
+				<p>Total Artist in the Wishlist</p>
+			</div>
+			<div class="card" style="text-align: center; padding: 3rem;">
+				<h3 style="font-size: 3rem; color: var(--main-color);" id="totalLocations">0</h3>
+				<p>Unique Venues/Cities</p>
+			</div>
+			<div class="card" style="text-align: center; padding: 3rem;">
+				<h3 style="font-size: 3rem; color: var(--main-color);" id="avgRating">0 / 10</h3>
+				<p>Average Rating</p>
+			</div>
+		</div>
+
+		<h2>Top 10 <span>Best Concerts</span></h2>
+		<div class="card-form" style="max-width: 1000px; margin: 2rem auto 4rem auto;">
+			<ol id="top10List" style="padding-left: 2rem; font-size: 1.6rem; color: #fff;">
+				<!--JS -->
+			</ol>
+		</div>
+
+		<h2>Visited <span>Locations & Venues</span></h2>
+		<div class="card-form" style="max-width: 1000px; margin: 2rem auto;">
+			<ul id="locationsList" style="list-style: none; padding: 0; font-size: 1.6rem; color: #fff;">
+				<!-- JS -->
+			</ul>
+		</div>
+	</section>
+
+	<script>
+		async function loadStats() {
+			try {
+				const res = await fetch('/api/my-concerts');
+
+				if (res.status === 401) {
+					window.location.href = '/login';
+					return;
+				}
+
+				const data = await res.json();
+				const past = data.past || [];
+				if (past.length === 0) {
+					document.getElementById('top10List').innerHTML = '<li>No concerts recorded yet.</li>';
+					return;
+				}
+				document.getElementById('totalConcerts').innerText = past.length;
+
+				const future = data.future || [];
+				document.getElementById('totalWish').innerText = future.length;
+
+				const uniqueLocations = new Set(past.map(c => c.location ? c.location.trim().toLowerCase() : null).filter(Boolean));
+				document.getElementById('totalLocations').innerText = uniqueLocations.size;
+
+				const ratings = past.map(c => Number(c.rating)).filter(r => !isNaN(r) && r > 0);
+				if (ratings.length > 0) {
+					const sum = ratings.reduce((acc, r) => acc + r, 0);
+					const avg = (sum / ratings.length).toFixed(1);
+					document.getElementById('avgRating').innerText = `${avg} / 10`;
+				}
+
+				const sortedByRating = [...past]
+					.filter(c => c.rating)
+					.sort((a, b) => Number(b.rating) - Number(a.rating))
+					.slice(0, 10);
+
+				const top10Container = document.getElementById('top10List');
+				top10Container.innerHTML = '';
+
+				sortedByRating.forEach(c => {
+					const li = document.createElement('li');
+					li.style.marginBottom = '1rem';
+					li.innerHTML = `<strong>${c.artist}</strong> — ${c.location || 'N/A'} (${c.date}) : <span style="color: #f1c40f;">${c.rating}/10 ⭐</span>`;
+					top10Container.appendChild(li);
+				});
+
+				const locationCounts = {};
+				past.forEach(c => {
+					if (c.location) {
+						const loc = c.location.trim();
+						locationCounts[loc] = (locationCounts[loc] || 0) + 1;
+					}
+				});
+
+				const locationsContainer = document.getElementById('locationsList');
+				locationsContainer.innerHTML = '';
+
+				Object.keys(locationCounts)
+					.sort((a, b) => locationCounts[b] - locationCounts[a])
+					.forEach(loc => {
+						const li = document.createElement('li');
+						li.style.display = 'flex';
+						li.style.justifyContent = 'space-between';
+						li.style.padding = '0.8rem 0';
+						li.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+						li.innerHTML = `<p>📍 ${loc}</p> <span><strong>${locationCounts[loc]} artist(s) seen</strong><span>`;
+						locationsContainer.appendChild(li);
+					});
+
+			} catch (err) {
+				console.error("Erreur de chargement des stats:", err);
+			}
+		}
+
+		document.addEventListener('DOMContentLoaded', loadStats);
+		const menuIcon = document.getElementById('menu-icon');
+		const navbar = document.querySelector('.navbar');
+
+		if (menuIcon) {
+			menuIcon.addEventListener('click', () => {
+				navbar.classList.toggle('active');
+			});
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vinyls & CDs Wishlist</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/jpeg" href="logo.jpg">
+</head>
+
+<body>
+	<header class="header">
+		<a href="index.html" class="logo">My <span>Music</span></a>
+
+		<div id="menu-icon">☰</div>
+
+		<nav class="navbar" id="navbar">
+			<a href="index.html">Home</a>
+			<a href="pf.html">My Profile</a>
+			<a href="add.html">Add a Concert</a>
+			<a href="shopping.html" class="active">Vinyls & CDs</a>
+			<a href="stat.html">Stats</a>
+			<a href="about.html">About</a>
+		</nav>
+
+		<a href="login.html" class="gradient-btn" id="authBtn">Connect</a>
+	</header>
+
+	<main>
+		<section class="hero">
+			<h1 class="second">My Shopping <span>Wishlist</span></h1>
+			<p style="font-size: 1.8rem; text-align: center; color: #b9c0df; margin-top: 1rem;">
+				Vinyls and CDs to buy for my collection
+			</p>
+		</section>
+
+		<section class="profile-container" style="padding-top: 1rem;">
+			<div class="profile-section">
+				<h2>Albums to Buy</h2>
+				<ul id="shoppingList" class="wishlist">
+					<!-- Chargé dynamiquement via JS -->
+				</ul>
+			</div>
+		</section>
+	</main>
+
+	<script>
+		async function loadShoppingList() {
+			try {
+				const res = await fetch('/api/my-albums');
+				if (res.status === 401) {
+					window.location.href = '/login';
+					return;
+				}
+
+				const albums = await res.json();
+				const ul = document.getElementById('shoppingList');
+				ul.innerHTML = '';
+
+				if (!Array.isArray(albums) || albums.length === 0) {
+					ul.innerHTML = '<li>No albums in your wishlist yet.</li>';
+					return;
+				}
+
+				albums.forEach(item => {
+					const li = document.createElement('li');
+					const icon = item.format === 'vinyl' ? '💿 Vinyl' : '💽 CD';
+					li.innerHTML = `<strong>${item.artist}</strong> — <em>${item.album}</em> <span class="badge" style="margin-left: 1rem;">${icon}</span>`;
+					ul.appendChild(li);
+				});
+			} catch (err) {
+				console.error("Error loading shopping list:", err);
+			}
+		}
+
+		document.addEventListener('DOMContentLoaded', loadShoppingList);
+
+		const menuIcon = document.getElementById('menu-icon');
+		const navbar = document.querySelector('.navbar');
+
+		if (menuIcon) {
+			menuIcon.addEventListener('click', () => {
+				navbar.classList.toggle('active');
+			});
+		}
+	</script>
+</body>
+
+</html>

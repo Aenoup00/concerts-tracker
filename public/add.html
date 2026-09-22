@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Concert & Album Tracker</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/jpeg" href="logo.jpg">
+</head>
+
+<body>
+	<header class="header">
+		<a href="index.html" class="logo">My <span>Music</span></a>
+
+		<div id="menu-icon">☰</div>
+
+		<nav class="navbar" id="navbar">
+			<a href="index.html">Home</a>
+			<a href="pf.html">My Profile</a>
+			<a href="add.html">Add a Concert</a>
+			<a href="shopping.html">Vinyls & CDs</a>
+			<a href="stat.html">Stats</a>
+			<a href="about.html">About</a>
+		</nav>
+
+		<a href="login.html" class="gradient-btn">Connect</a>
+	</header>
+
+	<main>
+		<section class="hero">
+			<h1 class="second">Add to <span>Your Lists !</span></h1>
+		</section>
+
+		<section class="add-concert">
+			<!-- Selection tabs -->
+			<div class="tabs">
+				<button class="tab-btn active" onclick="openTab(event, 'music')">What's your last concert ?</button>
+				<button class="tab-btn" onclick="openTab(event, 'future-concert')">What's your next concert ?</button>
+				<button class="tab-btn" onclick="openTab(event, 'album')">Add Album / Vinyl / CD</button>
+			</div>
+		</section>
+
+		<section class="form-container" style="padding: 0 20px 8rem 20px;">
+			<!-- Concert seen -->
+			<div id="music" class="tab-content active">
+				<h3>Add a Concert that you've done</h3>
+				<form action="/concerts/past" method="POST">
+					<div class="input-group">
+						<label for="pastArtist">Artist</label>
+						<input type="text" id="pastArtist" name="artist" required placeholder="Name of the Artist">
+					</div>
+					<div class="input-group">
+						<label for="pastDate">Date</label>
+						<input type="date" id="pastDate" name="date" required>
+					</div>
+					<div class="input-group">
+						<label>Event type</label>
+						<div class="radio-group">
+							<label class="radio-option">
+								<input type="radio" name="eventType" value="concert" checked> Concert
+							</label>
+							<label class="radio-option">
+								<input type="radio" name="eventType" value="festival"> Festival
+							</label>
+						</div>
+					</div>
+					<div class="input-group">
+						<label for="pastLocation">Lieu</label>
+						<input type="text" id="pastLocation" name="location" placeholder="Name of the place">
+					</div>
+					<div class="input-group">
+						<label for="pastRating">Note (on 10)</label>
+						<input type="number" id="pastRating" name="rating" min="1" max="10" placeholder="10">
+					</div>
+					<button type="submit" class="submit-btn">Add Concert</button>
+				</form>
+			</div>
+
+			<!-- Concert coming -->
+			<div id="future-concert" class="tab-content">
+				<h3>Add a Concert you want to do</h3>
+				<form action="/concerts/future" method="POST">
+					<div class="input-group">
+						<label for="futureArtist">Artist</label>
+						<input type="text" id="futureArtist" name="artist" required placeholder="Name of the Artist">
+					</div>
+					<div class="input-group">
+						<label for="futureSong">Music</label>
+						<input type="text" id="futureSong" name="song" placeholder="Your favorite song">
+					</div>
+					<button type="submit" class="submit-btn">Add Concert</button>
+				</form>
+			</div>
+
+			<!-- Album / Vinyl / CD shopping list -->
+			<div id="album" class="tab-content">
+				<h3>Add an Album to your Shopping List</h3>
+				<form action="/albums/wishlist" method="POST">
+					<div class="input-group">
+						<label for="albumArtist">Artist</label>
+						<input type="text" id="albumArtist" name="artist" required placeholder="Artist name">
+					</div>
+					<div class="input-group">
+						<label for="albumTitle">Album Title</label>
+						<input type="text" id="albumTitle" name="album" required placeholder="Album title">
+					</div>
+					<div class="input-group">
+						<label>Format</label>
+						<div class="radio-group">
+							<label class="radio-option">
+								<input type="radio" name="format" value="vinyl" checked> 💿 Vinyl
+							</label>
+							<label class="radio-option">
+								<input type="radio" name="format" value="cd"> 💽 CD
+							</label>
+						</div>
+					</div>
+					<button type="submit" class="submit-btn">Add to Wishlist</button>
+				</form>
+			</div>
+		</section>
+	</main>
+
+	<script>
+		// tabs
+		function openTab(evt, tabName) {
+			const contents = document.querySelectorAll('.tab-content');
+			contents.forEach(content => content.classList.remove('active'));
+
+			const buttons = document.querySelectorAll('.tab-btn');
+			buttons.forEach(button => button.classList.remove('active'));
+
+			document.getElementById(tabName).classList.add('active');
+			evt.currentTarget.classList.add('active');
+		}
+
+		const menuIcon = document.getElementById('menu-icon');
+		const navbar = document.querySelector('.navbar');
+
+		if (menuIcon) {
+			menuIcon.addEventListener('click', () => {
+				navbar.classList.toggle('active');
+			});
+		}
+	</script>
+</body>
+
+</html>

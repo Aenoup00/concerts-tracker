@@ -1,0 +1,836 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none; /* underline */
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    /* variables for the colors, no hard coded */
+    --bg-color: #050b2e;
+    --second-bg-color: #101a4b;
+    --text-color: white;
+    --main-color: #ff4fa3;
+}
+
+html {
+    font-size: 60%;
+    overflow-x: hidden; /* delete overflow */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color); /* color of the text */
+    cursor:
+        url("img/musical-note.png") 0 0,
+        auto;
+}
+
+.logo,
+.navbar a,
+.gradient-btn,
+.btn,
+.btn-group a:nth-of-type(2),
+.tab-btn,
+.card,
+.input-group label,
+.radio-option,
+.radio-option input[type="radio"],
+.submit-btn,
+.input-group input[type="file"],
+.artist-clickable,
+.admin-menu-item,
+#menu-icon {
+    cursor:
+        url("img/star.png") 0 0,
+        pointer;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    padding: 2rem 8%;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* stays at the top */
+    background: rgba(5, 11, 46, 0.8);
+}
+
+/* NAV BAR */
+.logo {
+    font-size: 3rem;
+    color: var(--text-color);
+    transition: 0.3s ease-in-out; /* adouci le passage sûr */
+}
+
+.logo:hover {
+    color: var(--main-color);
+    transform: scale(1.1);
+}
+
+/* Icône Burger pour Mobile (Masquée sur PC) */
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--text-color);
+    display: none;
+}
+
+span {
+    background: linear-gradient(270deg, /* left to right */ #ff4fa3 10%, #a11d64 100%);
+    background-clip: text; /* the gradient effect is only inside the text */
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.navbar a {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    font-weight: 500; /* l'épaisseur de la police */
+    border-bottom: 3px solid transparent; /* underline the button */
+    transition: 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+}
+
+.gradient-btn {
+    font-size: 2.5rem;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    background: linear-gradient(270deg, /* left to right */ #ff4fa3 10%, #a11d64 100%);
+    transition: 0.3s ease-in-out;
+    color: white;
+    border: none;
+}
+
+.gradient-btn:hover {
+    background-color: #d93c91;
+    transform: scale(1.1);
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 12% 5rem 12%;
+}
+
+/* FIRST PAGE */
+.home {
+    padding: 12rem 10% 5rem 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.home-content {
+    display: flex;
+    flex-direction: column; /* cote à cote */
+    align-items: flex-start;
+    align-self: center;
+}
+
+.home-content h1 {
+    font-size: 7rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+}
+
+.home-content h3 {
+    font-size: 4.5rem;
+}
+
+.home-content p {
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.8; /* make space between 2 ligne */
+}
+
+.home-img img {
+    width: 25vw;
+    border-radius: 50%;
+    box-shadow: 0 0 25px var(--main-color); /* the highlight behind the img */
+    transition: 0.3s ease-in-out;
+}
+
+.home-img img:hover {
+    box-shadow: /* expend the highlight */
+        0 0 25px var(--main-color),
+        0 0 50px var(--main-color),
+        0 0 100px var(--main-color);
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.btn {
+    padding: 1rem 3rem;
+    background-color: var(--main-color);
+    border-radius: 3rem;
+    font-size: 1.8rem;
+    color: var(--bg-color);
+    border: 2px solid transparent;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 25px var(--main-color),
+        0 0 50px var(--main-color);
+}
+
+.btn-group a:nth-of-type(2) {
+    /* select the second button */
+    background-color: var(--bg-color);
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+}
+
+.btn-group a:nth-of-type(2):hover {
+    box-shadow: 0 0 25px var(--text-color);
+    background-color: var(--text-color);
+    color: var(--main-color);
+}
+
+/* Onglets */
+.recommendation {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.recommendation h2,
+.form-container h2 {
+    font-size: 4.5rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    background-color: #12183a;
+    border: 2px solid #26336b;
+    color: #b9c0df;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+    background-color: var(--main-color);
+    border-color: #a11d64;
+    color: white;
+}
+
+.tab-btn:hover {
+    box-shadow: 0 0 20px var(--main-color);
+}
+
+.tab-content {
+    display: none; /* Masque les onglets inactifs */
+    width: 100%;
+}
+
+.tab-content.active {
+    display: block; /* Affiche uniquement l'onglet actif */
+}
+
+/* Grille de Cartes */
+.cards-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background: #10163a;
+    border: 1px solid #26336b;
+    border-radius: 16px;
+    padding: 15px;
+    width: 170px;
+    text-align: center;
+    transition:
+        transform 0.3s,
+        border-color 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* lift-up */
+    border-color: var(--main-color);
+}
+
+/* Visuel des pochettes */
+.card-cover {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.card-cover.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 12px auto;
+}
+
+.card-info h3 {
+    margin: 5px 0 2px 0;
+    font-size: 15px;
+}
+
+.card-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #b9c0df;
+}
+
+/* Section Formulaire */
+.form-container {
+    padding: 6rem 20px 8rem 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.form-container .subtitle {
+    font-size: 1.8rem;
+    color: #b9c0df;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+/* Carte du formulaire */
+.card-form {
+    background: #10163a;
+    border: 1px solid #26336b;
+    border-radius: 16px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 0 25px rgba(255, 79, 163, 0.08);
+}
+
+.card-form form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.input-group label {
+    font-size: 1.4rem;
+    color: #b9c0df;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+/* Fusion des règles pour tous les types de champs texte et saisie */
+.input-group input[type="text"],
+.input-group input[type="password"],
+.input-group input[type="date"],
+.input-group input[type="number"],
+.input-group input[type="file"],
+.input-group textarea,
+.input-group select {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #26336b;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+    border-color: var(--main-color);
+    box-shadow: 0 0 10px rgba(255, 79, 163, 0.3);
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Boutons radio */
+.radio-group {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.radio-option input[type="radio"] {
+    accent-color: var(--main-color);
+}
+
+/* Bouton d'envoi */
+.submit-btn {
+    width: 100%;
+    padding: 1.4rem;
+    background-color: var(--main-color);
+    border: 1px solid #a11d64;
+    border-radius: 25px;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #d93c91;
+}
+
+/* add.html */
+.hero {
+    min-height: auto;
+    padding-top: 13rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.hero h1.second,
+.profile-container h1.second {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* Section des onglets d'ajout */
+.add-concert {
+    min-height: auto;
+    padding: 0 20px 2rem 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Ajustement du conteneur de formulaire sur add.html */
+.tab-content h3 {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.tab-content form {
+    background: #10163a;
+    border: 1px solid #26336b;
+    border-radius: 16px;
+    padding: 3.5rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 0 25px rgba(255, 79, 163, 0.1);
+    text-align: left;
+}
+
+/* pf.html */
+.profile-container {
+    max-width: 900px; /* like a box */
+    margin: 0 auto; /* center */
+    padding-top: 4rem;
+}
+
+.profile-section h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--second-bg-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Emballage des tableaux pour défilement mobile */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+/* artist table */
+.artists-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #10163a;
+    border-radius: 12px;
+    min-width: 500px; /* Garantit que la table reste lisible */
+}
+
+.artists-table th,
+.artists-table td {
+    padding: 1.5rem 2rem;
+    text-align: left;
+    font-size: 1.6rem;
+}
+
+.artists-table th {
+    background: #12183a;
+    color: #b9c0df;
+    border-bottom: 1px solid #26336b;
+}
+
+.artists-table tbody tr {
+    border-bottom: 1px solid #1a2352;
+    transition: background 0.3s ease;
+}
+
+.artists-table tbody tr:hover {
+    background: #182252;
+}
+
+.artist-clickable {
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.badge {
+    background: var(--main-color);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 12px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.artist-details h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.details-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.detail-card {
+    background: var(--bg-color);
+    border: 1px solid #26336b;
+    border-radius: 8px;
+    padding: 1.5rem;
+    flex: 1 1 250px;
+    font-size: 1.4rem;
+}
+
+.detail-card p {
+    margin-bottom: 0.5rem;
+}
+
+/* Liste à voir */
+.wishlist {
+    list-style: none; /* delete list point */
+    background: #10163a;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+}
+
+.wishlist li {
+    font-size: 1.6rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #1a2352; /* add line */
+}
+
+.wishlist li:last-child {
+    border-bottom: none; /* delete the last line */
+}
+
+/* admin.html */
+section.admin-section {
+    padding: 14rem 8% 5rem 8%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.admin-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+}
+
+/* Sidebar d'administration */
+.admin-sidebar {
+    width: 280px;
+    background: #10163a;
+    border: 1px solid #26336b;
+    border-radius: 16px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.admin-sidebar h3 {
+    font-size: 2.2rem;
+    color: var(--text-color);
+    border-bottom: 1px solid #26336b;
+    padding-bottom: 1rem;
+}
+
+.admin-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.admin-menu-item {
+    font-size: 1.6rem;
+    color: #b9c0df;
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    transition: 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-menu-item:hover,
+.admin-menu-item.active {
+    background: var(--second-bg-color);
+    color: var(--main-color);
+    border-left: 3px solid var(--main-color);
+}
+
+/* Zone principale de contenu Admin */
+.admin-content {
+    flex: 1;
+    width: 100%;
+}
+
+.admin-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Liste des cartes de propositions */
+.proposals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.proposal-card {
+    background: #10163a;
+    border: 1px solid #26336b;
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: border-color 0.3s ease;
+}
+
+.proposal-card:hover {
+    border-color: var(--main-color);
+}
+
+.proposal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.proposal-info h4 {
+    font-size: 2.2rem;
+    color: var(--text-color);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.proposal-info p {
+    font-size: 1.5rem;
+    color: #b9c0df;
+    margin-bottom: 0.5rem;
+}
+
+.proposal-info .quote {
+    font-style: italic;
+    color: var(--text-color);
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    background: var(--bg-color);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--main-color);
+}
+
+footer {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 2.5rem;
+    background-color: #10163a;
+    color: white;
+}
+
+footer a {
+    color: var(--main-color);
+}
+
+/* =========================================================
+   MEDIA QUERY : ACCESSIBILITÉ ET ADAPTATION MOBILE (<= 768px)
+   ========================================================= */
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 50%; /* Réduit légèrement l'échelle pour mobile */
+    }
+
+    .header {
+        padding: 1.5rem 5%;
+    }
+
+    /* Affichage du bouton Burger */
+    #menu-icon {
+        display: block;
+    }
+
+    /* Menu de navigation mobile escamotable */
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 2rem 5%;
+        background: rgba(5, 11, 46, 0.95);
+        backdrop-filter: blur(15px);
+        border-bottom: 2px solid var(--second-bg-color);
+        display: none; /* Masqué par défaut */
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Classe ajoutée via JS pour ouvrir le menu */
+    .navbar.active {
+        display: flex;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 2.2rem;
+        margin-left: 0;
+        text-align: center;
+        padding: 0.8rem 0;
+    }
+
+    .gradient-btn {
+        display: none; /* Masqué sur très petit écran pour alléger */
+    }
+
+    section {
+        padding: 10rem 5% 4rem 5%;
+    }
+
+    /* Page d'accueil mobile */
+    .home {
+        flex-direction: column-reverse; /* Met l'image au-dessus ou sous le texte */
+        padding: 12rem 5% 4rem 5%;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    .home-content {
+        align-items: center;
+    }
+
+    .home-content h1 {
+        font-size: 4.5rem;
+    }
+
+    .home-content h3 {
+        font-size: 3rem;
+    }
+
+    .home-img img {
+        width: 60vw; /* Agrandit l'image sur mobile */
+    }
+
+    .btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    /* Cartes et Formulaires sur Mobile */
+    .cards-grid {
+        gap: 15px;
+    }
+
+    .card {
+        width: 140px; /* Ajuste la largeur des cartes de musique */
+        padding: 10px;
+    }
+
+    .card-cover {
+        height: 110px;
+    }
+
+    .card-form,
+    .tab-content form {
+        padding: 2rem;
+    }
+
+    /* Page Admin en colonne */
+    .admin-layout {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+    }
+
+    .proposal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}

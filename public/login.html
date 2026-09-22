@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Login</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/jpeg" href="logo.jpg">
+	<script>
+		function validate() {
+			let username = document.getElementById("username").value;
+			let password = document.getElementById("password").value;
+			let noerror = true;
+
+			if (username.length < 5 || username.length > 30) {
+				document.getElementById("usernameError").innerText = "Username must be between 5 and 50 characters";
+				noerror = false;
+			} else {
+				document.getElementById("usernameError").innerText = "";
+			}
+
+			if (password.length < 10) {
+				document.getElementById("passwordError").innerText = "Password must be at least 10 characters";
+				noerror = false;
+			} else {
+				document.getElementById("passwordError").innerText = "";
+			}
+			return noerror;
+		}
+	</script>
+</head>
+
+<body>
+	<section class="form-container" id="form">
+		<h2><span>Login</span></h2>
+		<p class="subtitle">Enter your Username and your password</p>
+
+		<div id="LoginFailed"></div>
+		<div class="card-form">
+			<form method="POST" action="/checkLogin" onsubmit="return validate()">
+				<div class="input-group">
+					<label>Username: <span id="usernameError" style="color: #F5277D;"></span></label>
+					<input type="text" name="username" id="username">
+					<br>
+					<label>Password: <span id="passwordError" style="color: #F5277D;"></span></label>
+					<input type="password" name="password" id="password">
+					<br>
+					<input class="submit-btn" type="submit" value="login">
+				</div>
+			</form>
+		</div>
+	</section>
+	<script>
+		const menuIcon = document.getElementById('menu-icon');
+		const navbar = document.querySelector('.navbar');
+
+		if (menuIcon) {
+			menuIcon.addEventListener('click', () => {
+				navbar.classList.toggle('active');
+			});
+		}
+	</script>
+</body>
+
+</html>

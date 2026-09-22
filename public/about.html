@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale1.0">
+	<title>About</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/jpeg" href="logo.jpg">
+</head>
+
+<body>
+	<header class="header">
+		<a href="index.html" class="logo">My <span>Music</span></a>
+
+		<div id="menu-icon">☰</div>
+
+		<nav class="navbar" id="navbar">
+			<a href="index.html">Home</a>
+			<a href="pf.html">My Profile</a>
+			<a href="add.html">Add a Concert</a>
+			<a href="shopping.html">Vinyls & CDs</a> <!-- NOUVEAU LIEN -->
+			<a href="stat.html">Stats</a>
+			<a href="about.html">About</a>
+		</nav>
+
+		<a href="login.html" class="gradient-btn" id="authBtn">Connect</a>
+	</header>
+
+	<section class="home" id="home">
+		<div class="home-content">
+			<h1 style="font-size: 3rem;"><span>Hi !</span></h1>
+			<p style="font-size: 1.8rem;">Right, so here you are on the ‘About’ page. Here, I’m going to explain how I came
+				up with the idea for this website, and for that we need to go back to <span>2017</span>.<br>The day my parents
+				dragged me and my brothers
+				along to our very first concert: Les Cowboys Fringants. Since that day, I haven’t stopped going to them – at
+				first always
+				with my parents, then more recently with my friends, who I’ve had the chance to introduce to the magic of
+				festivals. All this to say that I’ve been to LOADS of them, whether they’re concerts or festivals.
+				I’ve always liked keeping a record of who I’ve seen or who I’d love to see, in my mobile notes (not always
+				easy), which is why I wanted to create this website: to keep track of these precious memories.
+			</p>
+		</div>
+		<div class="home-img">
+			<img src="img/6.jpeg" alt="Abba" id="heroAudioImg" title="Click to play ABBA!">
+		</div>
+	</section>
+
+	<section class="profile-section" id="img">
+		<div class="profile-container" style="margin-top: 5rem;">
+			<h2 style="text-align: center;">My Best Photos</h2>
+			<p class="subtitle" style="text-align: center; margin-bottom: 3rem;">
+				A few snapshots taken during the concert!
+			</p>
+			<div class="cards-grid">
+
+				<div class="card" style="width: 260px;">
+					<video class="card-cover" style="height: 200px;" autoplay loop muted playsinline>
+						<source src="img/vindo.mov" type="video/mp4">
+						Your browser does not support videos.
+					</video>
+					<div class="card-info">
+						<h3>Indochine</h3>
+						<p>2025
+						<p>
+					</div>
+				</div>
+				<div class="card" style="width: 260px;">
+					<img src="img/c2l.jpeg" alt="Festival Photo" class="card-cover" style="height: 200px;">
+					<div class="card-info">
+						<h3>2L</h3>
+						<p>2026 - Cabaret Vert</p>
+					</div>
+				</div>
+				<div class="card" style="width: 260px;">
+					<img src="img/cadele.jpeg" alt="Photo Live" class="card-cover" style="height: 200px;">
+					<div class="card-info">
+						<h3>Adèle Castillon</h3>
+						<p>2025 - Fete de l'Huma</p>
+					</div>
+				</div>
+				<div class="card" style="width: 260px;">
+					<img src="img/caupi.jpeg" alt="Festival Photo" class="card-cover" style="height: 200px;">
+					<div class="card-info">
+						<h3>Aupinard</h3>
+						<p>2026</p>
+					</div>
+				</div>
+				<div class="card" style="width: 260px;">
+					<img src="img/cdora.jpeg" alt="Photo Live" class="card-cover" style="height: 200px;">
+					<div class="card-info">
+						<h3>Theodora</h3>
+						<p>2025 - Fete de l'Huma</p>
+					</div>
+				</div>
+				<div class="card" style="width: 260px;">
+					<img src="img/cgwendo.jpeg" alt="Festival Photo" class="card-cover" style="height: 200px;">
+					<div class="card-info">
+						<h3>Gwendoline</h3>
+						<p>2024 - Fete de l'Huma</p>
+					</div>
+				</div>
+				<div class="card" style="width: 260px;">
+					<img src="img/cindo.jpeg" alt="Photo Live" class="card-cover" style="height: 200px;">
+					<div class="card-info">
+						<h3>Indochine</h3>
+						<p>2026</p>
+					</div>
+				</div>
+				<div class="card" style="width: 260px;">
+					<img src="img/cjos.jpeg" alt="Festival Photo" class="card-cover" style="height: 200px;">
+					<div class="card-info">
+						<h3>Josman</h3>
+						<p>2026 - Cabaret Vert</p>
+					</div>
+				</div>
+				<div class="card" style="width: 260px;">
+					<img src="img/ckend.jpeg" alt="Photo Live" class="card-cover" style="height: 200px;">
+					<div class="card-info">
+						<h3>Kendrick Lamar</h3>
+						<p>2025</p>
+					</div>
+				</div>
+				<div class="card" style="width: 260px;">
+					<img src="img/codds.jpeg" alt="Festival Photo" class="card-cover" style="height: 200px;">
+					<div class="card-info">
+						<h3>The Odds</h3>
+						<p>2026</p>
+					</div>
+				</div>
+				<div class="card" style="width: 260px;">
+					<img src="img/csch.jpeg" alt="Photo Live" class="card-cover" style="height: 200px;">
+					<div class="card-info">
+						<h3>SCH</h3>
+						<p>2024 - Fete de l'Huma</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<script>
+		const tvGirlMusic = new Audio('abba.mp3');
+		const heroImg = document.getElementById('heroAudioImg'); // select the html tags by his id
+
+		heroImg.addEventListener('click', () => { // event : when there is a click
+			if (tvGirlMusic.paused) { // if the music is paused
+				tvGirlMusic.play(); // play the music
+			} else {
+				tvGirlMusic.pause(); // stop the music
+			}
+		});
+
+		const menuIcon = document.getElementById('menu-icon');
+		const navbar = document.querySelector('.navbar');
+
+		if (menuIcon) {
+			menuIcon.addEventListener('click', () => {
+				navbar.classList.toggle('active');
+			});
+		}
+	</script>
+</body>
+
+</html>

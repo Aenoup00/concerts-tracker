@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin Dashboard</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/jpeg" href="logo.jpg">
+</head>
+
+<body>
+	<header class="header">
+		<a href="/admin" class="logo">My <span>Music</span></a>
+
+		<div id="menu-icon">☰</div>
+
+		<nav class="navbar">
+			<a href="admin.html" style="color: var(--main-color); border-bottom: 3px solid var(--main-color);">Admin</a>
+		</nav>
+
+		<a href="/logout" class="gradient-btn">Logout</a>
+	</header>
+
+	<section class="admin-section">
+		<!-- Sidebar Navigation -->
+		<div class="admin-layout">
+			<aside class="admin-sidebar">
+				<h3>👑 Admin Menu</h3>
+				<div class="admin-menu">
+					<div class="admin-menu-item active" onclick="openAdminTab(event, 'proposals-tab')">
+						Propositions <span class="badge" id="proposals-count">0</span>
+					</div>
+					<div class="admin-menu-item" onclick="openAdminTab(event, 'add-user-tab')">
+						Add User
+					</div>
+					<div class="admin-menu-item" onclick="openAdminTab(event, 'users-tab'); loadUsersList();">
+						User Management
+					</div>
+					<div class="admin-menu-item" onclick="openAdminTab(event, 'audit-tab'); loadAuditLogs();">
+						Audit Log
+					</div>
+				</div>
+			</aside>
+
+			<main class="admin-content">
+				<!-- Tab 1: Dynamic Recommendations -->
+				<div id="proposals-tab" class="tab-content active">
+					<h3>Recommendations <span>Received</span></h3>
+					<div class="proposals-list" id="proposals-container"></div>
+				</div>
+
+				<!-- Tab 2: Add an user -->
+				<div id="add-user-tab" class="tab-content">
+					<h3>Add New <span>User</span></h3>
+					<div class="card-form" style="margin-top: 2rem; max-width: 100%;">
+						<form action="/addNewUser" method="POST" onsubmit="return validateUser()">
+							<div class="input-group">
+								<label for="name">Name <span id="NameError"
+										style="color:var(--main-color); font-size:1.2rem;"></span></label>
+								<input type="text" id="name" name="name" required placeholder="Full Name" maxlength="30">
+							</div>
+
+							<div class="input-group">
+								<label for="username">Username <span id="usernameError"
+										style="color:var(--main-color); font-size:1.2rem;"></span></label>
+								<input type="text" id="username" name="username" required placeholder="Username">
+							</div>
+
+							<div class="input-group">
+								<label for="password">Password <span id="passwordError"
+										style="color:var(--main-color); font-size:1.2rem;"></span></label>
+								<input type="password" id="password" name="password" required placeholder="Password (min 10 chars)">
+							</div>
+
+							<button type="submit" class="submit-btn">Create User</button>
+						</form>
+					</div>
+				</div>
+
+				<!-- Tab 3: Users Management -->
+				<div id="users-tab" class="tab-content">
+					<h3>Manage <span>Users</span></h3>
+					<ul id="usersContainer" class="wishlist" style="margin-top: 1rem;"></ul>
+				</div>
+
+				<!-- Tab 4: Audit Log -->
+				<div id="audit-tab" class="tab-content">
+					<h3>System <span>Audit Log</span></h3>
+					<div id="auditContainer" style="margin-top: 1rem;"></div>
+				</div>
+			</main>
+		</div>
+	</section>
+
+	<script>
+		// Tab switching handler
+		function openAdminTab(evt, tabName) {
+			const contents = document.querySelectorAll(".admin-content .tab-content");
+			contents.forEach((content) => content.classList.remove("active"));
+
+			const menuItems = document.querySelectorAll(".admin-menu-item");
+			menuItems.forEach((item) => item.classList.remove("active"));
+
+			document.getElementById(tabName).classList.add("active");
+			evt.currentTarget.classList.add("active");
+		}
+
+		// Form Validation
+		function validateUser() {
+			let name = document.getElementById("name").value;
+			let username = document.getElementById("username").value;
+			let password = document.getElementById("password").value;
+			let noerror = true;
+
+			if (name.length < 5 || name.length > 30) {
+				document.getElementById("NameError").innerText = " (5 to 30 chars)";
+				noerror = false;
+			} else {
+				document.getElementById("NameError").innerText = "";
+			}
+
+			if (username.length < 5 || username.length > 30) {
+				document.getElementById("usernameError").innerText = " (5 to 30 chars)";
+				noerror = false;
+			} else {
+				document.getElementById("usernameError").innerText = "";
+			}
+
+			if (password.length < 10) {
+				document.getElementById("passwordError").innerText = " (Min 10 chars)";
+				noerror = false;
+			} else {
+				document.getElementById("passwordError").innerText = "";
+			}
+
+			return noerror;
+		}
+
+		// Initial load handler
+		document.addEventListener("DOMContentLoaded", () => {
+			loadRecommendations();
+
+			const urlParams = new URLSearchParams(window.location.search);
+			if (urlParams.get("error") === "user_exists") {
+				const userErrSpan = document.getElementById("usernameError");
+				if (userErrSpan) {
+					userErrSpan.innerText = " (Username already taken!)";
+				}
+			}
+		});
+
+		// Fetch Recommendations
+		async function loadRecommendations() {
+			try {
+				const response = await fetch("/recommendations");
+				const data = await response.json();
+
+				const container = document.getElementById("proposals-container");
+				const countBadge = document.getElementById("proposals-count");
+
+				countBadge.innerText = data.length;
+				container.innerHTML = "";
+
+				if (data.length === 0) {
+					container.innerHTML = `<p style="font-size: 1.6rem; color: #b9c0df;">No recommendations for the moment.</p>`;
+					return;
+				}
+
+				data.forEach((item) => {
+					const card = document.createElement("div");
+					card.className = "proposal-card";
+					const typeTag = item.type ? item.type.toUpperCase() : "MUSIC";
+
+					card.innerHTML = `
+            <div class="proposal-info">
+              <div class="proposal-header">
+                <span class="badge">${typeTag}</span>
+              </div>
+              <h4>${item.title || "Titre inconnu"}</h4>
+              <p>Proposed by <strong>${item.username}</strong></p>
+              ${item.reason ? `<p class="quote">"${item.reason}"</p>` : ""}
+            </div>
+          `;
+					container.appendChild(card);
+				});
+			} catch (err) {
+				console.error("Erreur lors du chargement des recommandations:", err);
+			}
+		}
+
+		// Fetch User List
+		async function loadUsersList() {
+			try {
+				const res = await fetch('/api/admin/users');
+				const users = await res.json();
+				const container = document.getElementById('usersContainer');
+				container.innerHTML = '';
+
+				users.forEach(u => {
+					if (u.admin) return;
+					const li = document.createElement('li');
+					li.style.display = 'flex';
+					li.style.justifyContent = 'space-between';
+					li.style.alignItems = 'center';
+					li.style.padding = '1rem';
+					li.style.marginBottom = '1rem';
+
+					const btnStyle = u.isBlocked ? 'background:  var(--main-color); color: white;' : 'background: #FFE54F; color: black;';
+
+					li.innerHTML = `
+            <p><strong>${u.username}</strong> (${u.name || 'N/A'})</p>
+            <button class="gradient-btn" style="${btnStyle}" onclick="toggleBlock('${u.username}')">
+              ${u.isBlocked ? 'Unblock' : 'Block'}
+            </button>
+          `;
+					container.appendChild(li);
+				});
+			} catch (err) {
+				console.error("Error while loading users:", err);
+			}
+		}
+
+		// Block/Unblock User Action
+		async function toggleBlock(username) {
+			await fetch('/api/admin/toggle-block', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ targetUsername: username })
+			});
+			loadUsersList();
+		}
+
+		// Fetch Audit Logs
+		async function loadAuditLogs() {
+			try {
+				const res = await fetch('/api/admin/audit-log');
+				const logs = await res.json();
+				const container = document.getElementById('auditContainer');
+				container.innerHTML = '';
+
+				if (logs.length === 0) {
+					container.innerHTML = `<p style="font-size: 1.6rem; color: #b9c0df;">No action log</p>`;
+					return;
+				}
+
+				logs.reverse().forEach(log => {
+					const div = document.createElement('div');
+					div.className = 'proposal-card';
+					div.innerHTML = `
+            <p><strong>${log.username}</strong> — <em>${log.action}</em></p>
+            <small style="color: #8a94a6;">${new Date(log.timestamp).toLocaleString()}</small>
+          `;
+					container.appendChild(div);
+				});
+			} catch (err) {
+				console.error("Error logs loading:", err);
+			}
+		}
+		document.addEventListener('DOMContentLoaded', loadStats);
+		const menuIcon = document.getElementById('menu-icon');
+		const navbar = document.querySelector('.navbar');
+
+		if (menuIcon) {
+			menuIcon.addEventListener('click', () => {
+				navbar.classList.toggle('active');
+			});
+		}
+	</script>
+</body>
+
+</html>
